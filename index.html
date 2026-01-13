@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PERFECT PITCH Piano Tuner PRO - Professional piano tuning with precision pitch detection, tone generator, and metronome.">
+    <title>PERFECT PITCH Piano Tuner PRO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 2px solid #0f3460;
+        }
+        
+        header h1 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        header p {
+            color: #e94560;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .hero h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #e94560;
+        }
+        
+        .hero p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        /* Features Section */
+        .features {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+        
+        .features h2 {
+            text-align: center;
+            color: #1a1a2e;
+            font-size: 2.2em;
+            margin-bottom: 50px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-box {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #e94560;
+        }
+        
+        .feature-box h3 {
+            color: #1a1a2e;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-box h3::before {
+            content: "🎹";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .feature-box.metronome h3::before {
+            content: "⏱️";
+        }
+        
+        .feature-box.tone h3::before {
+            content: "🎼";
+        }
+        
+        .feature-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-box li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-box li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #e94560;
+            font-weight: bold;
+        }
+        
+        /* Screenshots Section */
+        .screenshots {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .screenshots h2 {
+            color: #fff;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+        }
+        
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .screenshot-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Comparison Section */
+        .comparison {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+        
+        .comparison h2 {
+            text-align: center;
+            color: #1a1a2e;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+        }
+        
+        .comparison-image {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .comparison-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px 0;
+            text-align: center;
+            color: #fff;
+            border-top: 2px solid #0f3460;
+        }
+        
+        footer h3 {
+            color: #e94560;
+            margin-bottom: 15px;
+        }
+        
+        footer a {
+            color: #e94560;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: #fff;
+        }
+        
+        footer p {
+            margin: 10px 0;
+        }
+        
+        .store-badge {
+            display: inline-block;
+            margin: 20px 10px;
+            padding: 15px 30px;
+            background: #e94560;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .store-badge:hover {
+            background: #c23b52;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .hero h2 {
+                font-size: 1.5em;
+            }
+            
+            .features h2, .screenshots h2, .comparison h2 {
+                font-size: 1.8em;
+            }
+            
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>PERFECT PITCH Piano Tuner PRO</h1>
+            <p>Professional-grade piano tuning with precision pitch detection</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Achieve Concert-Hall Perfection</h2>
+            <p>PERFECT PITCH Piano Tuner PRO combines world-class frequency detection with a suite of professional tools designed specifically for the complex harmonics of the piano. Whether you are a professional technician or a dedicated pianist, our high-precision algorithm provides the stability and accuracy you need to bring any piano to life.</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Professional Features</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h3>Piano Tuner</h3>
+                    <ul>
+                        <li>Graphic representation showing tone's sharpness, flatness or in tune</li>
+                        <li>Written representation in cents</li>
+                        <li>Note's letter name, pitch alteration and octave number</li>
+                        <li>Exact frequency (Hz) to 2 decimal places</li>
+                        <li>Keep Screen On function</li>
+                        <li>Auto-rotate support</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-box tone">
+                    <h3>Tone Generator</h3>
+                    <ul>
+                        <li>Piano keyboard interface</li>
+                        <li>Continuous tone playback</li>
+                        <li>One full octave display</li>
+                        <li>Scroll left or right to move up and down the keyboard</li>
+                        <li>Perfect for reference pitches and ear training</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-box metronome">
+                    <h3>Professional Metronome</h3>
+                    <ul>
+                        <li>BPM range: 40 to 220</li>
+                        <li>Numeric and graphic slider representation</li>
+                        <li>Increment/decrement buttons</li>
+                        <li>Multiple time signatures (2/4, 3/4, 4/4, 5/4, 6/8, 12/8)</li>
+                        <li>5 metronome voices (Beep, Click, Traditional, Cowbell, Ting)</li>
+                        <li>Keep Screen On function</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        <div class="container">
+            <h2>App Screenshots</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="PPPianoPro-1.jpg" alt="Piano Tuner Interface 1">
+                </div>
+                <div class="screenshot-item">
+                    <img src="PPPianoPro-2.jpg" alt="Piano Tuner Interface 2">
+                </div>
+                <div class="screenshot-item">
+                    <img src="PPMetronomePro-1.jpg" alt="Metronome Interface 1">
+                </div>
+                <div class="screenshot-item">
+                    <img src="PPMetronomePro-2.jpg" alt="Metronome Interface 2">
+                </div>
+                <div class="screenshot-item">
+                    <img src="PPMetronomePro-3.jpg" alt="Metronome Interface 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison">
+        <div class="container">
+            <h2>LITE vs PRO Comparison</h2>
+            <div class="comparison-image">
+                <img src="LITE vs PRO.jpg" alt="LITE vs PRO Feature Comparison">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h3>Get PERFECT PITCH Piano Tuner</h3>
+            <p>Available on Google Play</p>
+            <!-- Uncomment when apps are live on Play Store -->
+            <!-- <a href="YOUR_PLAY_STORE_LINK" class="store-badge">Download PRO Version</a> -->
+            <!-- <a href="YOUR_PLAY_STORE_LINK" class="store-badge">Download LITE Version</a> -->
+            
+            <p style="margin-top: 40px;">
+                <strong>Support:</strong> <a href="mailto:aidave2026@gmail.com">aidave2026@gmail.com</a>
+            </p>
+            <p>
+                <a href="privacy.html">Privacy Policy</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; color: #aaa;">
+                © 2026 PERFECT PITCH Company. All rights reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
